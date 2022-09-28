@@ -26,7 +26,8 @@ int main()
 	sf::RenderWindow window(sf::VideoMode(800, 600), "SFML works!");
 
 	// Create our "brush" (as a circle shape), with a radius of BrushRadius pixels
-	sf::CircleShape shape(BrushRadius);
+	sf::CircleShape shape;
+	//shape.setRadius(BrushRadius);
 
 	// Set the color of our "brush"
 	shape.setFillColor(BrushColor);
@@ -61,6 +62,7 @@ int main()
 				z = 0;
 				sf::Color BrushColor = sf::Color(x, y, z, Trans);
 				shape.setFillColor(BrushColor);
+				shape.setRadius(BrushRadius);
 			}
 
 			// G key changes color to Green
@@ -70,6 +72,7 @@ int main()
 				z = 0;
 				sf::Color BrushColor = sf::Color(x, y, z, Trans);
 				shape.setFillColor(BrushColor);
+				shape.setRadius(BrushRadius);
 			}
 
 			// B key changes color to Blue
@@ -79,6 +82,7 @@ int main()
 				y = 0;
 				sf::Color BrushColor = sf::Color(x, y, z, Trans);
 				shape.setFillColor(BrushColor);
+				shape.setRadius(BrushRadius);
 			}
 
 			if (event.key.code == sf::Keyboard::Left) {
@@ -88,6 +92,7 @@ int main()
 				}
 				sf::Color BrushColor = sf::Color(x, y, z, Trans);
 				shape.setFillColor(BrushColor);
+				shape.setRadius(BrushRadius);
 			}
 
 			if (event.key.code == sf::Keyboard::Right) {
@@ -97,17 +102,19 @@ int main()
 				}
 				sf::Color BrushColor = sf::Color(x, y, z, Trans);
 				shape.setFillColor(BrushColor);
+				shape.setRadius(BrushRadius);
 			}
 
 			if (event.key.code == sf::Keyboard::Up) {
 				BrushRadius += 4;
-				sf::CircleShape shape(BrushRadius);
+				shape.setRadius(BrushRadius);
 			}
 
 			if (event.key.code == sf::Keyboard::Down) {
-				BrushRadius -= 4;
-				sf::CircleShape circle;
-				circle.setRadius(BrushRadius);
+				if(BrushRadius > 4) {
+					BrushRadius -= 4;
+				}
+				shape.setRadius(BrushRadius);
 			}
 		}
 
